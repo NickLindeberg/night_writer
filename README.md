@@ -12,8 +12,14 @@
     - Iteration 1 *
     - Make dictionary and test*
     - Research how to make dictionary *
-    - Brainstorm Sat night assignments  
-    - Decide Sun work hours
+    - Decide Sun work hours *
 
 - Sunday
-  -AM 10
+  -AM 9 - 3 
+    - 9-11
+    - break
+    - 11:30 - 1:30
+    - break
+    - 2-3 
+    
+  -Work on iteration two. 
