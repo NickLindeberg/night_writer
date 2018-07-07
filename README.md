@@ -12,7 +12,7 @@
     - Iteration 1 *
     - Make dictionary and test*
     - Research how to make dictionary *
-    - Brainstorm Sat night assignments 
+    - Brainstorm Sat night assignments  
     - Decide Sun work hours
 
 - Sunday
