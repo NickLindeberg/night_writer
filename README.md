@@ -10,9 +10,9 @@
     - Lesson review for reading and writing files, individual *
   -1-4PM
     - Iteration 1 *
-    - Make dictionary and test
-    - Research how to make dictionary
-    - Brainstorm Sat night assignments
+    - Make dictionary and test*
+    - Research how to make dictionary *
+    - Brainstorm Sat night assignments  
     - Decide Sun work hours
 
 - Sunday
