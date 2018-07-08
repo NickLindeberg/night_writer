@@ -15,4 +15,6 @@ class EnglishToBraille
     @braille_dictionary[english_key]
 
   end
+
+
 end
