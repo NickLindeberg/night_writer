@@ -14,7 +14,7 @@ class NightWriter
     @braille_dictionary[english_key]
   end
 
-
+#
   # def translate_e_to_b(english_key)
   #   letter_array = @braille_dictionary[english_key]
   #     three_line_string = letter_array.map do |two_things|

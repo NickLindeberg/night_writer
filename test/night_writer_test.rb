@@ -3,7 +3,7 @@ require 'minitest/pride'
 require 'pry'
 require './lib/night_writer.rb'
 
-class NightWriterTest < Minitest::Test
+class NightWriterTest < Minitest::Test #
 
   def test_it_exists
     nw = NightWriter.new
