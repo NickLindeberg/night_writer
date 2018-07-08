@@ -1,4 +1,4 @@
-class BrailleDictionary
+class BrailleDictionary #
   attr_accessor :alphabet_keys
   def initialize
     @alphabet_keys = {
