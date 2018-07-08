@@ -12,10 +12,31 @@ class NightWriter
 
   def translate_e_to_b(english_key)
     @braille_dictionary[english_key]
-
   end
 
+
+  # def translate_e_to_b(english_key)
+  #   letter_array = @braille_dictionary[english_key]
+  #     three_line_string = letter_array.map do |two_things|
+  #       two_things.to_s
+  #   end
+  #   return three_line_string
+  # end
+
 end
+  #make 3 empty arrays line1 = [] line2 = [] line 3 =[]
+  #let's say we have the letter "a"
+  #call the "a" key on the dictionary
+  #shovel index [0] for the value array of key "a" into new array line1
+  #shocel index [1] for the value array of key "a" into new array line2
+  #shovel index [2] for the value array of key "a" into new array line 3
+  #somehow output all 3 new line arrays by sayign their name
+
+
+
+
+
+
 
 # handle = File.open(ARGV[0], "r")
 # incoming_text = handle.read
