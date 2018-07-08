@@ -15,11 +15,11 @@
     - Decide Sun work hours *
 
 - Sunday
-  -AM 9 - 3 
+  -AM 9 - 3
     - 9-11
+    - 11:30 lunch break
+    - 12 - 2
     - break
-    - 11:30 - 1:30
-    - break
-    - 2-3 
-    
-  -Work on iteration two. 
+    - 2-3?
+
+  -Work on iteration two.
