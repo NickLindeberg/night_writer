@@ -30,4 +30,8 @@ class BrailleDictionary
       "z" => ["0.", ".0", "00"]
   }
   end
+
+  # def dictionary(letter)
+  #   @alpha
+  # end
 end

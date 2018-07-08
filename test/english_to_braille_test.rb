@@ -14,9 +14,18 @@ class EnglishToBrailleTest < Minitest::Test
     etb = EnglishToBraille.new
     expected_a = ["0.", "..", ".."]
     expected_z = ["0.", ".0", "00"]
-
+    binding.pry
     assert_equal expected_a, etb.translate_e_to_b("a")
     assert_equal expected_z, etb.translate_e_to_b("z")
+  end
+
+  # def test_it_translates_multiple_letters
+  #   etb = EnglishToBraille.new
+  #   expected_a = ["0.", "..", ".."]
+  #   expected_z = ["0.", ".0", "00"]
+  #   binding.pry
+  #   assert_equal expected_a, etb.translate_e_to_b("a")
+  #   assert_equal expected_z, etb.translate_e_to_b("z")
   end
 
 
