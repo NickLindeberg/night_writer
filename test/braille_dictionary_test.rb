@@ -1,0 +1,15 @@
+require "minitest/autorun"
+require 'minitest/pride'
+require 'pry'
+require './lib/braille_dictionary.rb'
+
+class BrailleDictionaryTest < Minitest::Test
+
+  def test_it_exists
+    bd = BrailleDictionary.new
+    assert_instance_of BrailleDictionary, bd
+  end
+
+
+
+end
