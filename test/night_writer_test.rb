@@ -19,16 +19,25 @@ class NightWriterTest < Minitest::Test #
     assert_equal expected_z, nw.translate_e_to_b("z")
   end
 
-  #def test it prints one braille character on 3 lines
-  def test_braille_translation_prints_on_3_lines
-    skip
+  def test_it_translates_to_braille
     nw = NightWriter.new
-    expected_a = "0.\n..\n.."
-    actual = nw.translate_e_to_b("a")
-    assert_equal expected_a, actual
-
-
+    expected = "0.\n..\n.."
+    assert_equal expected, nw.shovel("a")
+    # assert_equal expected_top, nw.shovel_1("a")
+    # assert_equal expected_top, nw.shovel_1("a")
   end
+
+
+  # #def test it prints one braille character on 3 lines
+  # def test_braille_translation_prints_on_3_lines
+  #   skip
+  #   nw = NightWriter.new
+  #   expected_a = "0.\n..\n.."
+  #   actual = nw.translate_e_to_b("a")
+  #   assert_equal expected_a, actual
+
+
+
 
 
   # def test_it_translates_multiple_letters
