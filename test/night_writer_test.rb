@@ -21,11 +21,11 @@ class NightWriterTest < Minitest::Test #
 
   def test_it_collects_first_array_elements
     nw = NightWriter.new
-    expected_shovel_1 = ["0."]
+    expected_shovel = "0."
     # expected_middle = [".."]
     # expected_bottom = [".."]
 
-    assert_equal expected_shovel_1, nw.shovel_1("a")
+    assert_equal expected_shovel, nw.format_lines("a" )
     # assert_equal expected_top, nw.shovel_1("a")
     # assert_equal expected_top, nw.shovel_1("a")
   end

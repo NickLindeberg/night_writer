@@ -18,11 +18,18 @@ class NightWriter
 
   end
 
-  def shovel_1(letter_key)
+  def shovel(letter_key)
     value_array = @braille_dictionary[letter_key]
-    value_array.map do |two_character|
-      @line_1 << two_character[0]
-    end
+    @line_1 << value_array[0]
+    @line_2 << value_array[1]
+    @line_3 << value_array[2]
+    return format_lines
+  end
+
+  def format_lines
+    line_1_string = line_1.join("")
+    line_2_string = line_2.join("")
+    line_3_string = line_3.join("")
   end
   #
   # def shovel_2(letter_key)
