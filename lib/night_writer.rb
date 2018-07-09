@@ -8,13 +8,42 @@ class NightWriter
     #keep instance of .new braille dictionary
     #need to initialize it so we can use its methods
     @braille_dictionary = BrailleDictionary.new.alphabet_keys
+    @line_1 = []
+    @line_2 = []
+    @line_3 = []
   end
 
   def translate_e_to_b(english_key)
     @braille_dictionary[english_key]
+
   end
 
-#
+  def shovel_1(letter_key)
+    value_array = @braille_dictionary[letter_key]
+    value_array.map do |two_character|
+      @line_1 << two_character[0]
+    end
+  end
+  #
+  # def shovel_2(letter_key)
+  #   value_array = @braille_dictionary[letter_key]
+  #   value_array.each do |two_character|
+  #     @line_2 << two_character[1]
+  #   end
+  # end
+  #
+  # def shovel_3(letter_key)
+  #   value_array = @braille_dictionary[letter_key]
+  #   value_array.each do |two_character|
+  #     @line_3 << two_character[2]
+  #   end
+  # end
+
+  # def shovel_1(letter_key)
+  #   letter_key do |two|
+  #     two_character
+
+
   # def translate_e_to_b(english_key)
   #   letter_array = @braille_dictionary[english_key]
   #     three_line_string = letter_array.map do |two_things|

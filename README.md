@@ -22,4 +22,18 @@
     - break
     - 2-3?
 
-  -Work on iteration two.
+  -Monday
+    - During work time
+      - Do work
+    - After class
+      - Work 4:30 - 7:30
+        - Finish by Iteration 2 end of day 
+
+  -Tuesday
+    - During work time
+      - Do work
+    - After class
+      - Enumerable lesson 4-5
+      - Work from 5-6:30
+
+  -Wednesday
