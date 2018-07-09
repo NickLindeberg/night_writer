@@ -2,7 +2,11 @@ require './lib/braille_dictionary.rb'
 require 'pry'
 
 class NightWriter
-  attr_accessor :alphabet_keys, :braille_dictionary
+  attr_accessor :alphabet_keys,
+                :braille_dictionary,
+                :line_1,
+                :line_2,
+                :line_3
 
   def initialize
     #keep instance of .new braille dictionary
@@ -30,6 +34,9 @@ class NightWriter
     line_1_string = line_1.join("")
     line_2_string = line_2.join("")
     line_3_string = line_3.join("")
+    # binding.pry
+    @all_lines = [line_1_string, line_2_string, line_3_string]
+    @all_lines.join("\n")
   end
   #
   # def shovel_2(letter_key)
@@ -67,23 +74,17 @@ end
   #shocel index [1] for the value array of key "a" into new array line2
   #shovel index [2] for the value array of key "a" into new array line 3
   #somehow output all 3 new line arrays by sayign their name
+@nw = NightWriter.new
+handle = File.open(ARGV[0], "r")
+incoming_text = handle.read
+number_of_characters = incoming_text.length - 1 #was counting next line
+handle.close
 
+puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
 
+writer = File.open(ARGV[1], "w")
 
+#writer.write(translate_e_to_b(incoming_text))
+writer.write(@nw.shovel(incoming_text))
 
-
-
-
-# handle = File.open(ARGV[0], "r")
-# incoming_text = handle.read
-# number_of_characters = incoming_text.length - 1 #was counting next line
-# handle.close
-#
-# puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
-#
-# writer = File.open(ARGV[1], "w")
-#
-# #writer.write(translate_e_to_b(incoming_text))
-# writer.write(incoming_text)
-#
-# writer.close
+writer.close
