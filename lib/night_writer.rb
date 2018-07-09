@@ -17,11 +17,21 @@ class NightWriter
     @line_3 = []
   end
 
-  def translate(message)
-    
-
+#this is the main method
+#all helper methods are below in the order the main method runs them (for readability)
+  def translate(message_from_txt) #this method needs to iterate
+  message_character_array = separate(message_from_txt)
+  message_character_array.map do |letter|
+    one_braille_array = get_array(letter)
+    #now the output is the 3-element braille array for that one letter character
+    shovel(one_braille_array)
+    end
+    format_lines
   end
 
+  def separate(message_string)
+    message_string.chars
+  end
 
   def get_array(english_key)
     #used to be called def translate_e_to_b(english_key)
@@ -29,26 +39,27 @@ class NightWriter
     #THIS OUTPUTS THE braille ARRAY FOR THAT LETTER
   end
 
-  def shovel(letter_key)
-    value_array = get_array(english_key)
+  def shovel(value_array) #value_array is the braille array for one character
+#can you shovel an
     @line_1 << value_array[0]
     @line_2 << value_array[1]
     @line_3 << value_array[2]
-    #MOVE THIS SOMEWHERE return format_lines
   end
 
   def format_lines
-    line_1_string = line_1.join("")
-    line_2_string = line_2.join("")
-    line_3_string = line_3.join("")
+    line_1_string = @line_1.join("")
+    line_2_string = @line_2.join("")
+    line_3_string = @line_3.join("")
     # binding.pry
     @all_lines = [line_1_string, line_2_string, line_3_string]
     @all_lines.join("\n")
   end
 
+
   def write_file
 
   end
+
 end
   #
   # def shovel_2(letter_key)
@@ -85,3 +96,17 @@ end
   #shocel index [1] for the value array of key "a" into new array line2
   #shovel index [2] for the value array of key "a" into new array line 3
   #somehow output all 3 new line arrays by sayign their name
+
+# nw = NightWriter.new
+# handle = File.open(ARGV[0], "r")
+# incoming_text = handle.read
+# number_of_characters = incoming_text.length - 1 #was counting next line
+# handle.close
+#
+# puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
+#
+# writer = File.open(ARGV[1], "w")
+#
+# writer.write(nw.translate(incoming_text))
+#
+# writer.close
