@@ -17,17 +17,24 @@ class NightWriter
     @line_3 = []
   end
 
-  def translate_e_to_b(english_key)
-    @braille_dictionary[english_key]
+  def translate(message)
+    
 
   end
 
+
+  def get_array(english_key)
+    #used to be called def translate_e_to_b(english_key)
+    @braille_dictionary[english_key]
+    #THIS OUTPUTS THE braille ARRAY FOR THAT LETTER
+  end
+
   def shovel(letter_key)
-    value_array = @braille_dictionary[letter_key]
+    value_array = get_array(english_key)
     @line_1 << value_array[0]
     @line_2 << value_array[1]
     @line_3 << value_array[2]
-    return format_lines
+    #MOVE THIS SOMEWHERE return format_lines
   end
 
   def format_lines
@@ -38,6 +45,11 @@ class NightWriter
     @all_lines = [line_1_string, line_2_string, line_3_string]
     @all_lines.join("\n")
   end
+
+  def write_file
+
+  end
+end
   #
   # def shovel_2(letter_key)
   #   value_array = @braille_dictionary[letter_key]
@@ -66,7 +78,6 @@ class NightWriter
   #   return three_line_string
   # end
 
-end
   #make 3 empty arrays line1 = [] line2 = [] line 3 =[]
   #let's say we have the letter "a"
   #call the "a" key on the dictionary
@@ -74,17 +85,3 @@ end
   #shocel index [1] for the value array of key "a" into new array line2
   #shovel index [2] for the value array of key "a" into new array line 3
   #somehow output all 3 new line arrays by sayign their name
-@nw = NightWriter.new
-handle = File.open(ARGV[0], "r")
-incoming_text = handle.read
-number_of_characters = incoming_text.length - 1 #was counting next line
-handle.close
-
-puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
-
-writer = File.open(ARGV[1], "w")
-
-#writer.write(translate_e_to_b(incoming_text))
-writer.write(@nw.shovel(incoming_text))
-
-writer.close
