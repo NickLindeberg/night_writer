@@ -47,7 +47,6 @@ class NightWriter
 
   def shovel(value_array) #value_array is the braille array for one character
 #can you shovel an
-
     @line_1 << value_array[0]
     @line_2 << value_array[1]
     @line_3 << value_array[2]
@@ -57,34 +56,45 @@ class NightWriter
     line_1_string = @line_1.join("")
     line_2_string = @line_2.join("")
     line_3_string = @line_3.join("")
-    # binding.pry
+
     @all_lines = [line_1_string, line_2_string, line_3_string]
-    @all_lines.join("\n")
-  end
-
-
-  def write_file
-
-  end
-
-  def character_limit (incoming_text)
-    if @all_lines > 40
-      first_line = incoming_text.length[0..39]
-    elsif
-      second_line = income_text.length[40..79]
-    elsif
-      third_line = incoming_text.length[80-119]
-
+    if line_1_string.length < 80
+      @all_lines.join("\n")
+    else 
+      print_lines
     end
   end
 
-
-
-
-
-
-
+  def print_lines
+    next_line = []
+    third_line = []
+    @all_lines.map do |line|
+      line[0..79]
+      third_line << line[160..-1]
+      next_line <<line[80..159]
+    end
+    @all_lines += third_line
+    @all_lines += next_line
+    @all_lines.join("\n")
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
