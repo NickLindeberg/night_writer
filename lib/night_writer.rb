@@ -31,8 +31,10 @@ class NightWriter
       one_braille_array = get_array(letter)
       #now the output is the 3-element braille array for that one letter character
       shovel(one_braille_array)
+
     end
     format_lines
+
   end
 
   def separate(message_string)
@@ -58,45 +60,24 @@ class NightWriter
     line_3_string = @line_3.join("")
 
     @all_lines = [line_1_string, line_2_string, line_3_string]
-    if line_1_string.length < 80
-      @all_lines.join("\n")
-    else 
       print_lines
-    end
   end
 
   def print_lines
     next_line = []
-    third_line = []
+    second_line = []
+    first_line = []
     @all_lines.map do |line|
-      line[0..79]
-      third_line << line[160..-1]
-      next_line <<line[80..159]
+      first_line << line[0..79]
+      next_line << line[80..159]
+      second_line << line [160..-1]
     end
-    @all_lines += third_line
+    @all_lines = first_line
     @all_lines += next_line
+    @all_lines += second_line
     @all_lines.join("\n")
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   # def translate_e_to_b(english_key)
@@ -114,12 +95,6 @@ end
   #shocel index [1] for the value array of key "a" into new array line2
   #shovel index [2] for the value array of key "a" into new array line 3
   #somehow output all 3 new line arrays by sayign their name
-
-
-
-
-
-
 
 
 nw = NightWriter.new
