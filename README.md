@@ -27,13 +27,16 @@
       - Do work
     - After class
       - Work 4:30 - 7:30
-        - Finish by Iteration 2 end of day 
+        - Finish by Iteration 2 end of day
 
   -Tuesday
     - During work time
-      - Do work
+      - Nick 80 character method
+        - if else statement
+      -
     - After class
       - Enumerable lesson 4-5
       - Work from 5-6:30
 
   -Wednesday
+    - Clean up code 
