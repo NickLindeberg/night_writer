@@ -6,7 +6,10 @@ class NightWriter
                 :braille_dictionary,
                 :line_1,
                 :line_2,
-                :line_3
+                :line_3,
+                :reader,
+                :writer,
+                :incoming_text
 
   def initialize
     #keep instance of .new braille dictionary
@@ -17,7 +20,12 @@ class NightWriter
     @line_1 = []
     @line_2 = []
     @line_3 = []
+    @reader = File.open(ARGV[0], "r")
+    @writer = File.open(ARGV[1], "w")
+    @incoming_text = @reader.read
+    @reader.close
   end
+
 
 #this is the main method
 #all helper methods are below in the order the main method runs them (for readability)
@@ -100,15 +108,11 @@ end
   #somehow output all 3 new line arrays by sayign their name
 
 nw = NightWriter.new
-handle = File.open(ARGV[0], "r")
-incoming_text = handle.read
-number_of_characters = incoming_text.length - 1 #was counting next line
-handle.close
+@writer.write(nw.translate(@incoming_text))
+@writer.close
 
-puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
 
-writer = File.open(ARGV[1], "w")
 
-writer.write(nw.translate(incoming_text))
+#number_of_characters = incoming_text.length - 1 #was counting next line
 
-writer.close
+#puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
