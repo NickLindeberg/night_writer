@@ -6,27 +6,31 @@ class NightWriter
                 :braille_dictionary,
                 :line_1,
                 :line_2,
-                :line_3
+                :line_3,
+                :reader,
+                :writer,
+                :incoming_text
 
   def initialize
     #keep instance of .new braille dictionary
     #need to initialize it so we can use its methods
-
-
     @braille_dictionary = BrailleDictionary.new.alphabet_keys
     @line_1 = []
     @line_2 = []
     @line_3 = []
+    @reader = File.open(ARGV[0], "r")
+    @writer = File.open(ARGV[1], "w")
+    @incoming_text  = @reader.read
+    @reader.close
   end
-
 #this is the main method
 #all helper methods are below in the order the main method runs them (for readability)
   def translate(message_from_txt) #this method needs to iterate
-  message_character_array = separate(message_from_txt)
-  message_character_array.map do |letter|
-    one_braille_array = get_array(letter)
-    #now the output is the 3-element braille array for that one letter character
-    shovel(one_braille_array)
+    message_character_array = separate(message_from_txt.chomp)
+    message_character_array.map do |letter|
+      one_braille_array = get_array(letter)
+      #now the output is the 3-element braille array for that one letter character
+      shovel(one_braille_array)
     end
     format_lines
   end
@@ -43,6 +47,7 @@ class NightWriter
 
   def shovel(value_array) #value_array is the braille array for one character
 #can you shovel an
+
     @line_1 << value_array[0]
     @line_2 << value_array[1]
     @line_3 << value_array[2]
@@ -62,25 +67,26 @@ class NightWriter
 
   end
 
-end
-  #
-  # def shovel_2(letter_key)
-  #   value_array = @braille_dictionary[letter_key]
-  #   value_array.each do |two_character|
-  #     @line_2 << two_character[1]
-  #   end
-  # end
-  #
-  # def shovel_3(letter_key)
-  #   value_array = @braille_dictionary[letter_key]
-  #   value_array.each do |two_character|
-  #     @line_3 << two_character[2]
-  #   end
-  # end
+  def character_limit (incoming_text)
+    if @all_lines > 40
+      first_line = incoming_text.length[0..39]
+    elsif
+      second_line = income_text.length[40..79]
+    elsif
+      third_line = incoming_text.length[80-119]
 
-  # def shovel_1(letter_key)
-  #   letter_key do |two|
-  #     two_character
+    end
+  end
+
+
+
+
+
+
+
+end
+
+
 
 
   # def translate_e_to_b(english_key)
@@ -99,16 +105,18 @@ end
   #shovel index [2] for the value array of key "a" into new array line 3
   #somehow output all 3 new line arrays by sayign their name
 
+
+
+
+
+
+
+
 nw = NightWriter.new
-handle = File.open(ARGV[0], "r")
-incoming_text = handle.read
-number_of_characters = incoming_text.length - 1 #was counting next line
-handle.close
+nw.writer.write(nw.translate(nw.incoming_text))
+nw.writer.close
 
-puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
 
-writer = File.open(ARGV[1], "w")
+#number_of_characters = incoming_text.length - 1 #was counting next line
 
-writer.write(nw.translate(incoming_text))
-
-writer.close
+#puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
