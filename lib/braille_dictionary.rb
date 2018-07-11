@@ -1,3 +1,5 @@
+require 'pry'
+
 class BrailleDictionary
   attr_accessor :alphabet_keys
   def initialize
@@ -32,4 +34,15 @@ class BrailleDictionary
   }
   end
 
+  def braille_keys
+    @alphabet_keys.invert
+  end
+
+  def read_incoming_braille(braille_input)
+    @alphabet_keys = braille_keys
+    @alphabet_keys[braille_input]
+  end
+
 end
+bd = BrailleDictionary.new
+#binding.pry

@@ -16,7 +16,6 @@ class NightReader
   end
 
   def translate_to_english (braille_message)
-    
   end
 
 end
