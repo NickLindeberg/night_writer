@@ -7,7 +7,6 @@ class NightWriter
                 :line_1,
                 :line_2,
                 :line_3,
-                :reader,
                 :writer,
                 :incoming_text
 
@@ -22,14 +21,14 @@ class NightWriter
     @reader.close
   end
 
-#this is the main method
+#this is the main translate method
 #all helper methods are below in the order the main method runs them (for readability)
-  def translate(message_from_txt) #this method needs to iterate
+  def translate(message_from_txt)
     message_character_array = separate(message_from_txt.chomp)
     message_character_array.map do |letter|
-      one_braille_array = get_array(letter)
-      #now the output is the 3-element braille array for that one letter character
-      shovel(one_braille_array)
+    one_braille_array = get_array(letter)
+    #now the output is the 3-element braille array for that one letter character
+    shovel(one_braille_array)
     end
     format_lines
   end
