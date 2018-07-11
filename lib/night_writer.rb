@@ -12,8 +12,6 @@ class NightWriter
                 :incoming_text
 
   def initialize
-    #keep instance of .new braille dictionary
-    #need to initialize it so we can use its methods
     @braille_dictionary = BrailleDictionary.new.alphabet_keys
     @line_1 = []
     @line_2 = []
@@ -23,6 +21,7 @@ class NightWriter
     @incoming_text  = @reader.read
     @reader.close
   end
+
 #this is the main method
 #all helper methods are below in the order the main method runs them (for readability)
   def translate(message_from_txt) #this method needs to iterate
@@ -40,13 +39,10 @@ class NightWriter
   end
 
   def get_array(english_key)
-    #used to be called def translate_e_to_b(english_key)
     @braille_dictionary[english_key]
-    #THIS OUTPUTS THE braille ARRAY FOR THAT LETTER
   end
 
-  def shovel(value_array) #value_array is the braille array for one character
-#can you shovel an
+  def shovel(value_array)
     @line_1 << value_array[0]
     @line_2 << value_array[1]
     @line_3 << value_array[2]
@@ -56,7 +52,6 @@ class NightWriter
     line_1_string = @line_1.join("")
     line_2_string = @line_2.join("")
     line_3_string = @line_3.join("")
-
     @all_lines = [line_1_string, line_2_string, line_3_string]
       print_lines
   end
@@ -68,7 +63,7 @@ class NightWriter
     @all_lines.map do |line|
       first_line << line[0..79]
       next_line << line[80..159]
-      second_line << line [160..-1]
+      second_line << line[160..-1]
     end
     @all_lines = first_line
     @all_lines += next_line
@@ -77,29 +72,6 @@ class NightWriter
   end
 end
 
-
-  # def translate_e_to_b(english_key)
-  #   letter_array = @braille_dictionary[english_key]
-  #     three_line_string = letter_array.map do |two_things|
-  #       two_things.to_s
-  #   end
-  #   return three_line_string
-  # end
-
-  #make 3 empty arrays line1 = [] line2 = [] line 3 =[]
-  #let's say we have the letter "a"
-  #call the "a" key on the dictionary
-  #shovel index [0] for the value array of key "a" into new array line1
-  #shocel index [1] for the value array of key "a" into new array line2
-  #shovel index [2] for the value array of key "a" into new array line 3
-  #somehow output all 3 new line arrays by sayign their name
-
-
 nw = NightWriter.new
 nw.writer.write(nw.translate(nw.incoming_text))
 nw.writer.close
-
-
-#number_of_characters = incoming_text.length - 1 #was counting next line
-
-#puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
