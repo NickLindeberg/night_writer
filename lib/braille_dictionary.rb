@@ -1,4 +1,4 @@
-class BrailleDictionary #
+class BrailleDictionary
   attr_accessor :alphabet_keys
   def initialize
     @alphabet_keys = {
@@ -27,11 +27,9 @@ class BrailleDictionary #
       "w" => [".0", "00", ".0"],
       "x" => ["00", "..", "00"],
       "y" => ["00", ".0", "00"],
-      "z" => ["0.", ".0", "00"]
+      "z" => ["0.", ".0", "00"],
+      " " => ["..", "..", ".."]
   }
   end
 
-  # def dictionary(letter)
-  #   @alpha
-  # end
 end
