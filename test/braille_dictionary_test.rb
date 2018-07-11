@@ -17,7 +17,6 @@ class BrailleDictionaryTest < Minitest::Test
 
   def test_braille_corresponds_to_english_letter
     bd = BrailleDictionary.new
-    binding.pry
     assert_equal "z", bd.read_incoming_braille(["0.", ".0", "00"])
   end
 

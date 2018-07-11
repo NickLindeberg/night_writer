@@ -2,7 +2,7 @@
 require 'pry'
 
 class NightReader
-  attr_reader :print_confirm
+  attr_reader :print_confirm, :incoming_braille_text
 
   def initialize
     @braille_reader = File.open(ARGV[0], "r")
@@ -13,6 +13,10 @@ class NightReader
   def print_confirm #NOT COMPLETE YET
     number_of_characters = @incoming_braille_text.length - 1 #was counting next line
     puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
+  end
+
+  def
+    @incoming_braille_text
   end
 
 end
