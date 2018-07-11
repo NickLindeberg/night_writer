@@ -7,18 +7,18 @@ class NightReader
                 :all_one_line,
                 :b_to_e_dictionary,
                 :braille_reader,
-                :line_1,
-                :line_2,
-                :line_3
+                :incoming_line_1,
+                :incoming_line_2,
+                :incoming_line_3
 
   def initialize
     @b_to_e_dictionary = BrailleDictionary.new.braille_keys
     @braille_reader = File.open(ARGV[0], "r")
     @incoming_braille_text = @braille_reader.read
     @braille_reader.close
-    @line_1 = []
-    @line_2 = []
-    @line_3 = []
+    @incoming_line_1 = []
+    @incoming_line_2 = []
+    @incoming_line_3 = []
   end
 
   def print_confirm #NOT COMPLETE YET
@@ -30,7 +30,8 @@ class NightReader
   #   incoming_braille_text.delete("\n")
   # end
   def split(incoming_text)
-    @line_1, @line_2, @line_3 = incoming_text.split(/\n/)
+    @incoming_line_1, @incoming_line_2, @incoming_line_3 =
+    incoming_text.split(/\n/)
   end
 
   # def scan_to_array(all_one_line)

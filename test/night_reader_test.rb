@@ -23,9 +23,9 @@ class NightReaderTest < Minitest::Test
   def test_it_splits_incoming_text_at_line_breaks_into_arrays
     nr = NightReader.new
     nr.split("888888\n777777\n666666")
-    assert_equal "888888", nr.line_1
-    assert_equal "777777", nr.line_2
-    assert_equal "666666", nr.line_3
+    assert_equal "888888", nr.incoming_line_1
+    assert_equal "777777", nr.incoming_line_2
+    assert_equal "666666", nr.incoming_line_3
     #binding.pry
   end
 
