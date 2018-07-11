@@ -20,22 +20,27 @@ class NightWriterTest < Minitest::Test #
   end
 
   def test_it_changes_message_to_character_array
-      nw = NightWriter.new
-      assert_equal ["h", "e", "l", "l", "o"], nw.separate("hello")
+    nw = NightWriter.new
+    assert_equal ["h", "e", "l", "l", "o"], nw.separate("hello")
   end
 
+  def test_if_lines_joined
+    nw = NightWriter.new
+    assert_equal ["h", "e", "l", "l", "o"], nw.separate("hello")
+
+  end
 
   def test_it_translates_one_character_to_braille
     nw = NightWriter.new
-    expected = "0.\n..\n.."
-    #binding.pry
+    expected = "0.\n..\n..\n\n\n\n\n\n"
+
     assert_equal expected, nw.translate("a")
   end
 
   def test_it_translates_multiple_characters_to_braille
     nw = NightWriter.new
-    expected = "0.0.\n..0.\n...."
-    #binding.pry
+    expected = "0.0.\n..0.\n....\n\n\n\n\n\n"
+
     assert_equal expected, nw.translate("ab")
   end
 

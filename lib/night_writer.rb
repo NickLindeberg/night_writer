@@ -31,10 +31,8 @@ class NightWriter
       one_braille_array = get_array(letter)
       #now the output is the 3-element braille array for that one letter character
       shovel(one_braille_array)
-
     end
     format_lines
-
   end
 
   def separate(message_string)
