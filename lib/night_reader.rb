@@ -2,9 +2,12 @@
 require 'pry'
 
 class NightReader
-  attr_reader :print_confirm, :incoming_braille_text
+  attr_reader :print_confirm,
+              :incoming_braille_text,
+              :all_one_line
 
   def initialize
+    @b_to_e_dictionary = BrailleDictionary.new.braille_keys
     @braille_reader = File.open(ARGV[0], "r")
     @incoming_braille_text = @braille_reader.read
     @braille_reader.close
@@ -15,8 +18,12 @@ class NightReader
     puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
   end
 
-  def
-    @incoming_braille_text
+  def format_incoming_text(incoming_braille_text)
+    incoming_braille_text.delete("\n")
+  end
+
+  def scan_to_array(all_one_line)
+    all_one_line.scan(/../)
   end
 
 end
