@@ -22,7 +22,7 @@ class NightReaderTest < Minitest::Test
 
   def test_braille_corresponds_to_english_letter
     nr = NightReader.new
-    assert_equal "z", nr..read_incoming_braille(["0.", ".0", "00"])
+    assert_equal "z", nr.read_incoming_braille(["0.", ".0", "00"])
   end
 
 end

@@ -15,5 +15,4 @@ class BrailleDictionaryTest < Minitest::Test
     assert_equal ["0.", ".0", "00"],bd.alphabet_keys["z"]
   end
 
-
 end

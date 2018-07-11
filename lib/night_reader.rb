@@ -1,10 +1,12 @@
-#require './lib/braille_dictionary.rb'
+require './lib/braille_dictionary.rb'
 require 'pry'
 
 class NightReader
-  attr_reader :print_confirm,
-              :incoming_braille_text,
-              :all_one_line
+  attr_accessor :print_confirm,
+                :incoming_braille_text,
+                :all_one_line,
+                :b_to_e_dictionary,
+                :braille_reader
 
   def initialize
     @b_to_e_dictionary = BrailleDictionary.new.braille_keys
@@ -15,7 +17,7 @@ class NightReader
 
   def print_confirm #NOT COMPLETE YET
     number_of_characters = @incoming_braille_text.length - 1 #was counting next line
-    puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
+    puts "Created '#{ARGV[1]}' containing #{number_of_characters} unicorns"
   end
 
   def format_incoming_text(incoming_braille_text)
@@ -26,7 +28,13 @@ class NightReader
     all_one_line.scan(/../)
   end
 
+  def read_incoming_braille(braille_input)
+    @b_to_e_dictionary[braille_input]
+  end
+
 end
 
 nr = NightReader.new
-nr.print_confirm
+#nr.print_confirm
+puts nr.incoming_braille_text
+#nr.braille_reader.close
