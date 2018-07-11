@@ -9,8 +9,7 @@ class NightWriterTest < Minitest::Test #
     nw = NightWriter.new
     assert_instance_of NightWriter, nw
   end
-#below is broken now due to the method "translate" changing
-#the test has not changed
+
   def test_it_gets_braille_array_for_single_letters
     nw = NightWriter.new
     expected_a = ["0.", "..", ".."]
