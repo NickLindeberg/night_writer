@@ -17,7 +17,7 @@ class NightWriter
     @line_3 = []
     @reader = File.open(ARGV[0], "r")
     @writer = File.open(ARGV[1], "w")
-    @incoming_text = @reader.read
+    @incoming_text  = @reader.read
     @reader.close
   end
 
@@ -39,10 +39,9 @@ class NightWriter
 
   def get_array(english_key)
     @braille_dictionary[english_key]
-    #this outputs the braille array for that letter
   end
 
-  def shovel(value_array) #value_array is the braille array for one character
+  def shovel(value_array)
     @line_1 << value_array[0]
     @line_2 << value_array[1]
     @line_3 << value_array[2]
@@ -53,16 +52,25 @@ class NightWriter
     line_2_string = @line_2.join("")
     line_3_string = @line_3.join("")
     @all_lines = [line_1_string, line_2_string, line_3_string]
-    @all_lines.join("\n")
+      print_lines
   end
 
+  def print_lines
+    next_line = []
+    second_line = []
+    first_line = []
+    @all_lines.map do |line|
+      first_line << line[0..79]
+      next_line << line[80..159]
+      second_line << line[160..-1]
+    end
+    @all_lines = first_line
+    @all_lines += next_line
+    @all_lines += second_line
+    @all_lines.join("\n")
+  end
 end
 
 nw = NightWriter.new
 nw.writer.write(nw.translate(nw.incoming_text))
 nw.writer.close
-
-
-#number_of_characters = incoming_text.length - 1 #was counting next line
-
-#puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
