@@ -1,7 +1,9 @@
 require 'pry'
 
 class BrailleDictionary
-  attr_accessor :alphabet_keys
+  attr_accessor :alphabet_keys,
+                :braille_keys
+                
   def initialize
     @alphabet_keys = {
       "a" => ["0.", "..", ".."],
@@ -36,11 +38,6 @@ class BrailleDictionary
 
   def braille_keys
     @alphabet_keys.invert
-  end
-
-  def read_incoming_braille(braille_input)
-    @alphabet_keys = braille_keys
-    @alphabet_keys[braille_input]
   end
 
 end
