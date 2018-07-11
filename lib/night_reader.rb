@@ -29,15 +29,17 @@ class NightReader
   # def format_incoming_text(incoming_braille_text)
   #   incoming_braille_text.delete("\n")
   # end
-  def split(incoming_text)
+  def split_braille(incoming_text)
     @incoming_line_1, @incoming_line_2, @incoming_line_3 =
     incoming_text.split(/\n/)
   end
-
   # def scan_to_array(all_one_line)
   #   all_one_line[0..39].scan(/../)
   # end
-  def line_to_array
+  def scan_to_array(string)
+    #remember to call this method three times
+    #possibly buy iterating over each incoming_line string
+    string.scan(/../)
   end
 
   def read_incoming_braille(braille_input)

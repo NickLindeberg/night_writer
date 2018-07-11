@@ -22,11 +22,17 @@ class NightReaderTest < Minitest::Test
 
   def test_it_splits_incoming_text_at_line_breaks_into_arrays
     nr = NightReader.new
-    nr.split("888888\n777777\n666666")
+    nr.split_braille("888888\n777777\n666666")
     assert_equal "888888", nr.incoming_line_1
     assert_equal "777777", nr.incoming_line_2
     assert_equal "666666", nr.incoming_line_3
     #binding.pry
+  end
+
+  def test_it_splits_string_every_two_characters
+    nr = NightReader.new
+    actual = nr.scan_to_array("00..00..00..")
+    assert_equal ["00", "..", "00", "..", "00", ".."], actual
   end
 
 end
