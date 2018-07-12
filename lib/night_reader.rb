@@ -21,22 +21,11 @@ class NightReader
     @incoming_line_3 = []
   end
 
-  def print_confirm #NOT COMPLETE YET
-    number_of_characters = @incoming_braille_text.length - 1 #was counting next line
-    puts "Created '#{ARGV[1]}' containing #{number_of_characters} unicorns"
+  def split_braille(incoming_text)
+    separated_lines = incoming_text.split(/\n/)
   end
 
-  # def format_incoming_text(incoming_braille_text)
-  #   incoming_braille_text.delete("\n")
-  # end
-  def split_braille(incoming_text)
-    @incoming_line_1, @incoming_line_2, @incoming_line_3 =
-    incoming_text.split(/\n/)
-  end
-  # def scan_to_array(all_one_line)
-  #   all_one_line[0..39].scan(/../)
-  # end
-  def scan_to_array(string)
+  def scan_to_array_then_translate(string)
     #remember to call this method three times
     #possibly buy iterating over each incoming_line string
     string.scan(/../)
@@ -46,9 +35,13 @@ class NightReader
     @b_to_e_dictionary[braille_input]
   end
 
+  def print_confirm #NOT COMPLETE YET
+    number_of_characters = @incoming_braille_text.length - 1 #was counting next line
+    puts "Created '#{ARGV[1]}' containing #{number_of_characters} characters"
+  end
+
 end
 
 nr = NightReader.new
 #nr.print_confirm
 puts nr.incoming_braille_text
-#nr.braille_reader.close
