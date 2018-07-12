@@ -9,16 +9,28 @@ class NightReader
                 :braille_reader,
                 :incoming_line_1,
                 :incoming_line_2,
-                :incoming_line_3
+                :incoming_line_3,
+                :english_writer
 
   def initialize
     @b_to_e_dictionary = BrailleDictionary.new.braille_keys
     @braille_reader = File.open(ARGV[0], "r")
+    @english_writer = File.open(ARGV[1], "w")
     @incoming_braille_text = @braille_reader.read
     @braille_reader.close
     @incoming_line_1 = []
     @incoming_line_2 = []
     @incoming_line_3 = []
+  end
+
+  def braille_translate(incoming_braille_text)
+    @incoming_braille_text = incoming_braille_text
+    split_incoming_text(incoming_braille_text)
+    scanned_braille_array = scan_to_array(message_braille_array)
+    scanned_braille_array.map do |letter|
+      zipped array = a.zip_to_array
+    end
+    zipped_arrays_to_english_string
   end
 
   def print_confirm
@@ -53,9 +65,13 @@ class NightReader
   	end
   	final_english_message = array_of_strings.join
   end
-
 end
 
 nr = NightReader.new
 #nr.print_confirm
+nr.english_writer.write(nr.zipped_arrays_to_english_string(nr.incoming_braille_text))
+# puts nr.incoming_braille_text
+nr.writer.close
+
 puts nr.incoming_braille_text
+
