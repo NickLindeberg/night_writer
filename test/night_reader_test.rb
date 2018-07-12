@@ -12,14 +12,15 @@ class NightReaderTest < Minitest::Test
 
   def test_braille_corresponds_to_english_letter
     nr = NightReader.new
+
     assert_equal "z", nr.read_incoming_braille(["0.", ".0", "00"])
   end
 
   def test_it_splits_incoming_text_at_line_breaks_into_arrays
     nr = NightReader.new
-    nr.split_braille("888888\n777777\n666666")
-    assert_equal ["888888", "777777", "666666"], nr.separated_lines
+    actual = nr.split_incoming_text("888888\n777777\n666666")
 
+    assert_equal ["888888", "777777", "666666"], actual 
   end
 
   def test_it_splits_string_every_two_characters
@@ -30,11 +31,11 @@ class NightReaderTest < Minitest::Test
 
   def test_it_outputs_a_string_of_english_letters
     nr = NightReader.new
-    incoming_line_1 = ["11", "22", "33"]
-    incoming_line_2 = ["44", "55", "66"]
-    incoming_line_3 = ["77", "88", "99"]
-    expected = [["11", "44", "77"], ["22", "55", "88"], ["33", "66", "99"]]
-    actual = nr.line_to_array(incoming_line_1, incoming_line_2, incoming_line_3)
+    incoming_line_1 = ["11"]
+    incoming_line_2 = ["44"]
+    incoming_line_3 = ["77"]
+    expected = [["11", "44", "77"]]
+    actual = nr.zip_to_array(incoming_line_1, incoming_line_2, incoming_line_3)
 
     assert_equal expected, actual
 

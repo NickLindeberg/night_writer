@@ -21,7 +21,7 @@ class NightReader
     @incoming_line_3 = []
   end
 
-  def braille_translate
+  # def braille_translate
 
   def print_confirm #NOT COMPLETE YET
     number_of_characters = @incoming_braille_text.length - 1 #was counting next line
@@ -33,7 +33,11 @@ class NightReader
     incoming_text.split(/\n/)
   end
 
-  def line_to_array(incoming_line_1, incoming_line_2, incoming_line_3)
+  def scan_to_array(all_one_line)
+    all_one_line.scan(/../)
+  end
+
+  def zip_to_array(incoming_line_1, incoming_line_2, incoming_line_3)
     incoming_line_1.zip(incoming_line_2, incoming_line_3)
   end
 
@@ -43,12 +47,12 @@ class NightReader
 
   def zipped_arrays_to_english_string(array_of_arrays)
 #the above array_of_arrays argument will come from the zip "lines_to_array"method
-	array_of_strings = []
-	array_of_arrays map do |array|
-	array_of_strings << read_incoming_braille[array]
-	end
-	final_english_message = array_of_strings.join
-end
+	  array_of_strings = []
+	  array_of_arrays.map do |array|
+	  array_of_strings << read_incoming_braille[array]
+	 end
+	 final_english_message = array_of_strings.join
+  end
 
 
 
