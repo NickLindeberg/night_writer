@@ -9,11 +9,13 @@ class NightReader
                 :braille_reader,
                 :incoming_line_1,
                 :incoming_line_2,
-                :incoming_line_3
+                :incoming_line_3,
+                :english_writer
 
   def initialize
     @b_to_e_dictionary = BrailleDictionary.new.braille_keys
     @braille_reader = File.open(ARGV[0], "r")
+    @english_writer = File.open(ARGV[1], "w")
     @incoming_braille_text = @braille_reader.read
     @braille_reader.close
     @incoming_line_1 = []
@@ -21,7 +23,16 @@ class NightReader
     @incoming_line_3 = []
   end
 
-  # def braille_translate
+  def braille_translate(incoming_braille_text)
+    @incoming_braille_text = incoming_braille_text
+    split_incoming_text(incoming_braille_text)
+    scanned_braille_array = scan_to_array(message_braille_array)
+    scanned_braille_array.map do |letter|
+      zipped array = a.zip_to_array
+    end
+    zipped_arrays_to_english_string
+  end
+
 
   def print_confirm #NOT COMPLETE YET
     number_of_characters = @incoming_braille_text.length - 1 #was counting next line
@@ -46,7 +57,7 @@ class NightReader
   end
 
   def zipped_arrays_to_english_string(array_of_arrays)
-#the above array_of_arrays argument will come from the zip "lines_to_array"method
+#the above array_of_arrays argument will come from the zip_to_array"method
 	  array_of_strings = []
 	  array_of_arrays.map do |array|
 	  array_of_strings << read_incoming_braille[array]
@@ -60,5 +71,6 @@ end
 
 nr = NightReader.new
 #nr.print_confirm
-puts nr.incoming_braille_text
-#nr.braille_reader.close
+nr.english_writer.write(nr.zipped_arrays_to_english_string(nr.incoming_braille_text))
+# puts nr.incoming_braille_text
+nr.writer.close

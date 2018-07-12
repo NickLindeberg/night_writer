@@ -20,7 +20,7 @@ class NightReaderTest < Minitest::Test
     nr = NightReader.new
     actual = nr.split_incoming_text("888888\n777777\n666666")
 
-    assert_equal ["888888", "777777", "666666"], actual 
+    assert_equal ["888888", "777777", "666666"], actual
   end
 
   def test_it_splits_string_every_two_characters
@@ -39,6 +39,13 @@ class NightReaderTest < Minitest::Test
 
     assert_equal expected, actual
 
+  end
+
+  def test_it_translates_braille_to_english
+    nr = NightReader.new
+    expected = "hey"
+    actual = nr.braille_translate("0.0.00\n00.0.0\n....00")
+    assert_equal expected, actual
   end
 
 end
